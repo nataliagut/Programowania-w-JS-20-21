@@ -1,44 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- bootstrap -->
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <link href="https://cdn.lineicons.com/2.0/LineIcons.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+      crossorigin="anonymous"
+    />
+    <link href="https://cdn.lineicons.com/2.0/LineIcons.css" rel="stylesheet" />
     <title>Sticky Notes App</title>
-</head>
+  </head>
 
-<body>
-    <section>
+  <body>
+    <section id="formSection">
+      <button
+        type="button"
+        class="btn btn-outline-secondary"
+        id="noteAdd"
+        onclick="showNoteForm()"
+      >
+        Add note
+      </button>
+      <div id="noteForm">
+        <div id="form" style="width: 300px; height: 250px">
+          <label for="">Title</label>
+          <br />
+          <input type="text" name="" id="noteTitle" /><br />
+          <label for="">Content</label><br />
+          <textarea id="noteContent"></textarea><br />
 
-        <button type="button" class="btn btn-outline-secondary" id="noteAdd" onclick="showNoteForm()">Add note</button>
-        <div id="noteForm">
-            <label for="">Title</label>
-            <br>
-            <input type="text" name="" id="noteTitle"><br>
-            <label for="">Content</label><br> <textarea id="noteContent"></textarea><br>
-            <button id="btnOK" onclick="createNewNote()"><i class="lni lni-checkmark-circle"></i></button>
-            <input type="color" name="" id="noteColor">
-            <br>
-            <!-- <input type="date" name="" id=""> -->
-            <label for="">Should be pinned?</label>
-            <input type="checkbox" name="" id="isPinned">
+          Choose color of your note
+          <input type="color" name="" id="noteColor" />
+          <br />
+          Set a reminder <input type="datetime-local" id="reminderDate" />
+          <br />
+          <!-- <input type="date" name="" id=""> -->
+          <label for="">Should be pinned?</label>
+          <input type="checkbox" name="" id="isPinned" /><br />
+          <div class="centerBtn">
+            <button id="btnOK"><i class="lni lni-checkmark-circle"></i></button>
+          </div>
         </div>
-        <!-- <button id="noteAdd">Add note</button> -->
-
-
-
+      </div>
+      <!-- <button id="noteAdd">Add note</button> -->
     </section>
-    <main>
-
-    </main>
+    <main></main>
     <script src="main.js"></script>
-</body>
-
+  </body>
 </html>

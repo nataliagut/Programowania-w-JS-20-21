@@ -1,54 +1,102 @@
-//pokazanie formularza po kliknięciu w button
+const notesKey = 'notes';
+let notes = [];
+alert('hello');
+//pokazanie formularza po kliknięciu w button, ukrycie po zatwierdzeniu notatki
+
+window.onload = loadStorageNotes()
+
 function showNoteForm() {
     var noteForm = document.getElementById("noteForm");
+    var noteAddBtn = document.getElementById("noteAdd");
     noteForm.style.visibility = "visible";
+    noteAddBtn.style.display = "none";
+    //czyszczenie inputów
+    document.querySelector('#noteTitle').value = "";
+    document.querySelector('#noteContent').value = "";
+    document.querySelector('#noteColor').value = 'default';
+    document.querySelector('#isPinned').checked = false;
 
 }
-let notes = [];
+function hideNoteForm() {
+    var noteForm = document.getElementById("noteForm");
+    var noteAddBtn = document.getElementById("noteAdd");
+    noteForm.style.visibility = "hidden";
+    noteAddBtn.style.display = "block";
 
-/* const note = {
-    title: '',
-    content: '',
-    /* color: '#ff0000',
-    pinned: false, 
-    createDate: new Date(),
-}; */
+}
 
-function createNewNote() {
+// add note btn listener
 
+document.getElementById("btnOK").addEventListener('click', function () {
     const title = document.querySelector('#noteTitle').value;
     const isPinned = document.querySelector('#isPinned').checked;
     let color = document.querySelector('#noteColor').value;
-
-
+    const colorNote = document.querySelector('#noteColor').value;
     const content = document.querySelector('#noteContent').value;
-    const date = new Date();
+    const reminderDate = new Date(document.querySelector("#reminderDate").value);
+    const createDate = new Date();
+    color = color.replace("#", "");
+    addNote(title, isPinned, color, content, createDate, reminderDate, notes.length);
+})
 
-    //console.log(title, content);
+
+function loadStorageNotes() {
+    const notesFromLocalStorage = JSON.parse(localStorage.getItem(notesKey));
+
+    if (notesFromLocalStorage != null) {
+        notesFromLocalStorage.forEach((note) => {
+            addNote(note.title, note.isPinned, note.color, note.content, note.createDate, note.reminderDate, note.index)
+        })
+    }
+}
+
+//usuwanie notatki
+function removeNote(id) {
+    let removeIndex = 0
+    notes.forEach((note, index) => {
+        if (note.id == id) {
+            removeIndex = index;
+        }
+    })
+    notes.splice(removeIndex, 1)
+    localStorage.setItem(notesKey, JSON.stringify(notes));
+
+}
+
+// dodawanie notatki
+function addNote(title, isPinned, color, content, createDate, reminderDate, index) {
+
     //tworzenie html za pomocą js
     const htmlDiv = document.createElement('div');
     const htmlTitle = document.createElement('h1');
     const htmlContent = document.createElement('p');
     const htmlDate = document.createElement('p');
-    // htmlDiv.setAttribute("style", "width:250px; height: 250px; padding: 25px;  box-shadow:0px 10px 24px 0px rgba(0,0,0,0.75); background-color: red; margin-top: 10px; margin-right: 10px; float: left;");
-    // htmlContent.setAttribute("style", "font-size: 26px;");
-    // htmlDate.setAttribute("style", "font-size: 10px; float: right; position: relative; bottom: 0; right: 0;")
-    // htmlTitle.setAttribute("style", "text-align: center; width: 250px;, height: 250px;")
+    htmlDiv.id = `note${index}`;
+    
+    const removeIcon = document.createElement('img');
+    
     htmlDiv.classList.add('note');
-    htmlDiv.style.backgroundColor = color;
-    color = color.replace("#", "");
+    htmlDiv.style.backgroundColor = `#${color}`;
 
+    hideNoteForm();
     // kolor tła dziesiętnie
     let decimalBackgroundColor = parseInt(color, 16);
     if (decimalBackgroundColor < 5723991) {
         htmlDiv.style.color = "white";
     }
     else htmlDiv.style.color = "black";
-
+    // remove icon
+    if (decimalBackgroundColor < 5723991) {
+        removeIcon.src = 'xwhite.png';
+    }
+    else removeIcon.src = 'xblack.png';
+    
+    
     htmlTitle.innerHTML = title;
     htmlContent.innerHTML = content;
-    htmlDate.innerHTML = new Date().toLocaleString();
+    htmlDate.innerHTML = createDate.toLocaleString();
 
+    htmlDiv.appendChild(removeIcon);
     htmlDiv.appendChild(htmlTitle);
     htmlDiv.appendChild(htmlContent);
     htmlDiv.appendChild(htmlDate);
@@ -56,42 +104,62 @@ function createNewNote() {
     const main = document.querySelector('main');
     if (isPinned) main.prepend(htmlDiv);
     else main.appendChild(htmlDiv);
-    //notes.push(note)
-    noteToList(title, content, date);
-}
-function noteToList(title, content, createDate) {
+
+    let id = Math.random().toString() + Math.random().toString()
+
     const note = {
+        id: id,
         title: title,
         content: content,
-        //pinned: isPinned,
-        createDate: createDate,
-
+        isPinned: isPinned,
+        color: color,
+        reminderDate: reminderDate.toLocaleString(),
+        createDate: createDate.toLocaleString()
     }
+
+    removeIcon.onclick = function () {
+        removeNote(id);
+        main.innerHTML = "";
+        notes = [];
+        loadStorageNotes();
+    }
+
     notes.push(note);
+    localStorage.setItem(notesKey, JSON.stringify(notes));
 }
-/* function addNote(){
-    createNewNote(note);
-notes.push(note);
-console.log(notes);
-} */
 
-/* for (const note of notes) {
-    const htmlSection = document.createElement('section');
-    const htmlTitle = document.createElement('h1');
-    const htmlContent = document.createElement('p');
-    const htmlDate = document.createElement('h4');
+let notifies = [];
 
-    htmlSection.classList.add('note');
-    htmlTitle.innerHTML = note.title;
-    htmlContent.innerHTML = note.content;
-    htmlDate.innerHTML = note.createDate.toLocaleString();
+//notifications
 
-    htmlSection.appendChild(htmlTitle);
-    htmlSection.appendChild(htmlContent);
-    htmlSection.appendChild(htmlDate);
+/* function checkForNotifications(note) {
+    const timestamp = new Date().getTime() //aktualny czas
+    const reminderD = note.createDate.getTime()
+    var timeLeft = reminderD - timestamp
 
-    const main = document.querySelector('main');
-    main.appendChild(htmlSection);
-} */
-
-
+    notifies = notes.filter(note => Math.abs(timeLeft) < 3600000 );
+    console.log(notifies);
+    if (notifies.length > 0) {
+        alert('hello');
+    }
+}
+notes.forEach(note => {
+setInterval(() => {
+    checkForNotifications(note);
+}, 1000); }); */
+function checkForNotifications(){
+    let actualDate = new Date().toLocaleString();
+    notes.forEach(note => {
+    notifies = notes.filter(note => note.reminderDate === actualDate);
+    if (notifies.length > 0) {
+        for(let i of notifies){
+        alert(`Przypomnienie dla notatki ${i.title}`);
+        notifies.splice(0);
+        break;
+        }
+    }
+    });
+}
+setInterval(() => {
+    checkForNotifications(notes);
+}, 1000);
