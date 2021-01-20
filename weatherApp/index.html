@@ -1,43 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
     <title>WeatherApp</title>
-</head>
+  </head>
 
-<body>
-<div id="header">
-    <input type="text" class="searchbox" id="search" placeholder="Type a city..." autocomplete="off" ><br>
-    <i class='fa fa-4x fa-sun-o icon' style='color: #FFA500;'></i>
-</div>
-<main>
-<div class='wrapper'>
-    <div class='widget' style='margin-right: 31px;'>
-     <!-- <i class='fa fa-4x fa-sun-o icon' style='color: #FFA500;'></i> -->
-     <img class='iconWeather' id="icon" src='' alt=''>
-      <div>
-        <div class='city'>Informations will be shown here</div>
-        <div class='date'>Date</div>
-        <div class='degree'>Temperature in °C</div>
-        <div class='description'>Description</div>
-        <div class='lastUpdate'>Time of last update</div>
-        
-      </div>
+  <body>
+    <div id="header">
+      <input
+        type="text"
+        class="searchbox"
+        id="search"
+        placeholder="Type a city..."
+        autocomplete="off"
+      /><br />
+      <i class="fa fa-4x fa-sun-o icon" style="color: #ffa500"></i>
     </div>
-    <div class='widget' id="bgwidget">
-      <!-- <div id="icon"><img id="wicon" src="" alt="Weather icon"></div>
+    <main>
+      <div class="wrapper">
+        <div class="widget" style="margin-right: 31px">
+          <!-- <i class='fa fa-4x fa-sun-o icon' style='color: #FFA500;'></i> -->
+          <img class="iconWeather" id="icon" src="" alt="" />
+          <div>
+            <div class="city">Informations will be shown here</div>
+            <div class="date">Date</div>
+            <div class="degree">Temperature in °C</div>
+            <div class="description">Description</div>
+            <div class="lastUpdate">Time of last update</div>
+          </div>
+        </div>
+        <div class="widget" id="bgwidget">
+          <!-- <div id="icon"><img id="wicon" src="" alt="Weather icon"></div>
        <i class='fa fa-4x fa-bolt icon' style='color: #82b2e4;'></i> -->
-      <div>
-        <div class='humidity'>Humidity:</div>
-        <div class='sunrise'>Sunrise: </div>
-        <div class='sunset'>Sunset: </div>
+          <div>
+            <div class="humidity">Humidity:</div>
+            <div class="sunrise">Sunrise:</div>
+            <div class="sunset">Sunset:</div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</main>
-<script src="main.js"></script>
-</body>
+    </main>
+    <script src="main.js"></script>
+  </body>
 </html>

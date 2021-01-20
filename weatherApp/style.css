@@ -6,112 +6,111 @@
  * https://opensource.org/licenses/MIT
  */
 
-
- body {
-    font-family: 'Open Sans', sans-serif;
-    width: 100vw;
-    height: 100vh;
-    background-color: #eee;
-    display: inline-block;
+body {
+  font-family: "Open Sans", sans-serif;
+  width: 100vw;
+  height: 100vh;
+  background-color: #eee;
+  display: inline-block;
 }
 main {
-    align-items: baseline;
+  align-items: baseline;
 }
 .wrapper {
-    position: absolute;
-    display: block;
-    margin: 0 auto;
-    top: 45%;
-    left: 50vw;
-    width: 635.156px;
-    height: 300px;
-    margin: -150px 0 0 -317.578px;
+  position: absolute;
+  display: block;
+  margin: 0 auto;
+  top: 45%;
+  left: 50vw;
+  width: 635.156px;
+  height: 300px;
+  margin: -150px 0 0 -317.578px;
 }
 .widget {
-    float: left;
-    position: relative;
-    margin-top: 60px;
-    box-sizing: content-box;
-    width: 228px;
-    height: 228px;
-    padding: 36px;
-    border-radius: 6px;
-    background-color: #fff;
-    box-shadow: 0 0 15px #ddd;
+  float: left;
+  position: relative;
+  margin-top: 60px;
+  box-sizing: content-box;
+  width: 228px;
+  height: 228px;
+  padding: 36px;
+  border-radius: 6px;
+  background-color: #fff;
+  box-shadow: 0 0 15px #ddd;
 }
-#bgwidget{
-    background-image: url(background.jpg);
-    background-size: 100%;
-    background-repeat: no-repeat;
-    font-size: 1.5em;
+#bgwidget {
+  background-image: url(background.jpg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  font-size: 1.5em;
 }
 .iconWeather {
-    font-family: 'FontAwesome';
-    float: right;
-    animation: bolt 1.5s infinite linear;  
+  font-family: "FontAwesome";
+  float: right;
+  animation: bolt 1.5s infinite linear;
 }
 
 .widget > div {
-    font-weight: 300;
-    position: absolute;
-    bottom: 36px;
-    color: #b8b8b8;
+  font-weight: 300;
+  position: absolute;
+  bottom: 36px;
+  color: #b8b8b8;
 }
 .degree {
-    font-size: 1em;
+  font-size: 1em;
 }
 .country {
-    font-size: 2em;
-    line-height: 10px;
-    color: #cbcbcb;
+  font-size: 2em;
+  line-height: 10px;
+  color: #cbcbcb;
 }
 .fa-sun-o {
-    font-size: 70px;
-    font-family: 'FontAwesome';
-    margin-top: 10px;
-    animation: sunRotate 3.7s infinite linear;
+  font-size: 70px;
+  font-family: "FontAwesome";
+  margin-top: 10px;
+  animation: sunRotate 3.7s infinite linear;
 }
 .fa-bolt {
-    animation: bolt .5s infinite linear;
+  animation: bolt 0.5s infinite linear;
 }
 @keyframes sunRotate {
-    to {
-        transform: rotate(360deg);
-    }
+  to {
+    transform: rotate(360deg);
+  }
 }
 @keyframes bolt {
-    0% {
-        margin-right: 0;
-    }
-    50% {
-        margin-right: -20px;
-        /*color: #ffa500; */
-    }
-    75% {
-        margin-right: 0;
-    }
-    100% {
-        margin-left: -20px;
-    }
+  0% {
+    margin-right: 0;
+  }
+  50% {
+    margin-right: -20px;
+    /*color: #ffa500; */
+  }
+  75% {
+    margin-right: 0;
+  }
+  100% {
+    margin-left: -20px;
+  }
 }
 
-#header{
-    display:block;
-    margin: 0 auto;
-    text-align: center;
-    font-size: 25px;
+#header {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 25px;
 }
-.searchbox{
-background-color: transparent;
-border-spacing: 1cm;
-border-left: none;
-border-right: none;
-border-top: none;
-border-bottom-color: #fff;
+.searchbox {
+  background-color: transparent;
+  border-spacing: 1cm;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  border-bottom-color: #fff;
 
--webkit-appearance: none;
--moz-appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 
-font-family: inherit;
-font-size: inherit;
+  font-family: inherit;
+  font-size: inherit;
 }
