@@ -74,9 +74,7 @@ function loadLastInfoFromLS() {
     });
   }
 }
-function UpdateInfo() {
-  loadLastInfoFromLS();
-}
+
 setInterval(() => {
-  UpdateInfo();
+  loadLastInfoFromLS();
 }, 120000);
