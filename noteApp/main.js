@@ -1,13 +1,14 @@
 const notesKey = 'notes';
 let notes = [];
-alert('hello');
+let btnAdd = document.querySelector('#noteAdd');
+let noteForm = document.getElementById("noteForm");
+let noteAddBtn = document.getElementById("noteAdd");
 //pokazanie formularza po kliknięciu w button, ukrycie po zatwierdzeniu notatki
 
 window.onload = loadStorageNotes()
 
 function showNoteForm() {
-    var noteForm = document.getElementById("noteForm");
-    var noteAddBtn = document.getElementById("noteAdd");
+    
     noteForm.style.visibility = "visible";
     noteAddBtn.style.display = "none";
     //czyszczenie inputów
@@ -17,9 +18,8 @@ function showNoteForm() {
     document.querySelector('#isPinned').checked = false;
 
 }
+noteAddBtn.addEventListener('click', showNoteForm);
 function hideNoteForm() {
-    var noteForm = document.getElementById("noteForm");
-    var noteAddBtn = document.getElementById("noteAdd");
     noteForm.style.visibility = "hidden";
     noteAddBtn.style.display = "block";
 
@@ -147,14 +147,26 @@ notes.forEach(note => {
 setInterval(() => {
     checkForNotifications(note);
 }, 1000); }); */
+function hideNotify(){
+    notifyForm = document.querySelector('.notification');
+    notifyForm.style.display = 'none';
+}
 function checkForNotifications(){
     let actualDate = new Date().toLocaleString();
     notes.forEach(note => {
     notifies = notes.filter(note => note.reminderDate === actualDate);
     if (notifies.length > 0) {
         for(let i of notifies){
-        alert(`Przypomnienie dla notatki ${i.title}`);
+        //show notify
+        notifyForm = document.querySelector('.notification');
+        notifyText = document.querySelector('.textNotify');
+        notifyForm.style.display = 'block';
+        notifyText.innerText = `Przypomnienie dla notatki ${i.title}`;
         notifies.splice(0);
+        setTimeout(() => {
+            hideNotify();
+        }, 3000);
+       // notifies.splice(i.index,1);
         break;
         }
     }

@@ -2,6 +2,34 @@
 body p {
   font-family: "Hachi Maru Pop", cursive;
 }
+/* przypomnienie */
+.notification{
+  position: absolute;
+  /* visibility: hidden; */
+  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(179, 134, 134, 0.8);
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center; 
+    /* display: block; */
+    display: none;
+}
+.textNotify{
+  display: block;
+  width: 300px;
+  height: 70px;
+  margin: 0 auto;
+  align-items: center;
+  position: relative;
+  margin-top: 20%;
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+  color: black;
+  background-color: #eee;
+  box-shadow: 0px 10px 24px 0px rgba(0, 0, 0, 0.75);
+}
 #formSection {
   z-index: 1;
   position: relative;
