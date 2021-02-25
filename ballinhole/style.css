@@ -1,10 +1,10 @@
 body {
   width: 100vw;
   height: 100vh;
-  background-color:white;
+  background-color: white;
 }
 
-#instructionForm{
+#instructionForm {
   visibility: visible;
   z-index: 1000000;
   width: 100vw;
@@ -16,7 +16,7 @@ body {
   position: absolute;
   background-color: aquamarine;
 }
-.instruction h1{
+.instruction h1 {
   text-align: center;
 }
 /* .instruction{
@@ -31,32 +31,31 @@ body {
   
 } */
 #ball {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: red;
-    position: absolute;
-    top: 20px;
-    left: 20px;
-  }
-  .container{
-      overflow: hidden;
-  }
-  .instruction button{
-    
-    display: block;
-    margin: 0 auto;
-    width: 200px;
-    height: 150px;
-    font-size: 3em;
-  }
-  .hole{
-    width: 75px;
-    height: 75px;
-    border-radius: 50%;
-    z-index: -2;
-    position: absolute;
-  }
-  .hole{
-    background: #000000;    
-  }
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: red;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+.container {
+  overflow: hidden;
+}
+.instruction button {
+  display: block;
+  margin: 0 auto;
+  width: 200px;
+  height: 150px;
+  font-size: 3em;
+}
+.hole {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  z-index: -2;
+  position: absolute;
+}
+.hole {
+  background: #000000;
+}
