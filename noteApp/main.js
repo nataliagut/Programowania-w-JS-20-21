@@ -3,9 +3,8 @@ let notes = [];
 let btnAdd = document.querySelector('#noteAdd');
 let noteForm = document.getElementById("noteForm");
 let noteAddBtn = document.getElementById("noteAdd");
-//pokazanie formularza po kliknięciu w button, ukrycie po zatwierdzeniu notatki
+window.onload = loadStorageNotes();
 
-window.onload = loadStorageNotes()
 
 function showNoteForm() {
     
@@ -24,8 +23,6 @@ function hideNoteForm() {
     noteAddBtn.style.display = "block";
 
 }
-
-// add note btn listener
 
 document.getElementById("btnOK").addEventListener('click', function () {
     const title = document.querySelector('#noteTitle').value;
@@ -130,23 +127,7 @@ function addNote(title, isPinned, color, content, createDate, reminderDate, inde
 
 let notifies = [];
 
-//notifications
 
-/* function checkForNotifications(note) {
-    const timestamp = new Date().getTime() //aktualny czas
-    const reminderD = note.createDate.getTime()
-    var timeLeft = reminderD - timestamp
-
-    notifies = notes.filter(note => Math.abs(timeLeft) < 3600000 );
-    console.log(notifies);
-    if (notifies.length > 0) {
-        alert('hello');
-    }
-}
-notes.forEach(note => {
-setInterval(() => {
-    checkForNotifications(note);
-}, 1000); }); */
 function hideNotify(){
     notifyForm = document.querySelector('.notification');
     notifyForm.style.display = 'none';
