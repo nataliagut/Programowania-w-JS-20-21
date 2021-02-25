@@ -19,17 +19,7 @@ body {
 .instruction h1 {
   text-align: center;
 }
-/* .instruction{
-  position: absolute;
-  display: block;
-  justify-content: center;
-  align-items: center; 
-  background: rgba(90, 139, 185, 0.8);
-  width: 100vw;
-  height: 100vh;
-  margin: 0 auto;
-  
-} */
+
 #ball {
   width: 50px;
   height: 50px;

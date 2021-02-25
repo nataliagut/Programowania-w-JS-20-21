@@ -149,7 +149,8 @@ function checkCollision() {
 function collisionDone() {
   score++; //dodanie punktu
   if (score == 10) {
-    window.alert(`Koniec gry! Twój czas to: ${time}`);
+    let info = `Koniec gry! Twój czas to: ${time}`;
+    alert(info);
   } else {
     container.removeChild(hole);
     putHole();
