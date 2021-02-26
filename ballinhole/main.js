@@ -82,37 +82,37 @@ setInterval(() => {
 // }
 function verticalPosition(e) {
   //w górę
-  if (e.beta > 0 && e.beta <= 45) {
-    speedY = e.gamma / 35;
+  if (e.beta > 0 && e.beta <= 90) {
+    speedY = e.gamma / 10;
   }
-  if (e.beta > 45 && e.beta <= 90) {
-    speedY = e.gamma / 30;
-  }
+//   if (e.beta > 45 && e.beta <= 90) {
+//     speedY = e.gamma / 30;
+//   }
   //w dół
-  if (e.beta > 0 && e.beta <= 45) {
-    speedY = Math.abs(e.beta / 35);
-  }
-  if (e.beta > 45 && e.beta <= 90) {
+  if (e.beta > 90 && e.beta <= 180) {
     speedY = Math.abs(e.beta / 30);
   }
+//   if (e.beta > 45 && e.beta <= 90) {
+//     speedY = Math.abs(e.beta / 30);
+//   }
   moveBall();
 }
 
 function horizontalPosition(e) {
   //prawo
-  if (e.gamma > 0 && e.gamma <= 45) {
-    speedX = Math.abs(e.beta / 35);
-  }
-  if (e.gamma > 45 && e.gamma <= 90) {
+  if (e.gamma > 0 && e.gamma <= 90) {
     speedX = Math.abs(e.beta / 30);
   }
+//   if (e.gamma > 45 && e.gamma <= 90) {
+//     speedX = Math.abs(e.beta / 30);
+//   }
   //lewo
-  if (e.beta > -90 && e.beta <= -45) {
-    speedX = e.beta / 35;
+  if (e.alpha > -90 && e.alpha <= 0) {
+    speedX = e.gamma / 30;
   }
-  if (e.beta > -45 && e.beta <= 0) {
-    speedX = e.beta / 30;
-  }
+//   if (e.beta > -45 && e.beta <= 0) {
+//     speedX = e.beta / 30;
+//   }
   moveBall();
 }
 //rozmiar kulki 50px
@@ -151,6 +151,7 @@ function collisionDone() {
   if (score == 10) {
     let info = `Koniec gry! Twój czas to: ${time}`;
     alert(info);
+    window.location.reload();
   } else {
     container.removeChild(hole);
     putHole();
